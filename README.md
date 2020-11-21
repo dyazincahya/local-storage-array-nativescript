@@ -1,2 +1,2 @@
-# localdb-helper-nativescript
-This is the simple local database for Nativescript, integrated with application-settings module from Nativescript
+# LOCALDB HELPER NATIVESCRIPT
+This is the simple Local Database for Nativescript, integrated with application-settings module from Nativescript
