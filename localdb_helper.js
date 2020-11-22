@@ -1,5 +1,17 @@
 const appSettings = require("tns-core-modules/application-settings");
 
+function multiDimensionalUnique(arr) {
+    var uniques = [];
+    var itemsFound = {};
+    for(var i = 0, l = arr.length; i < l; i++) {
+        var stringified = JSON.stringify(arr[i]);
+        if(itemsFound[stringified]) { continue; }
+        uniques.push(arr[i]);
+        itemsFound[stringified] = true;
+    }
+    return uniques;
+}
+
 exports.get = function(index="all", xkey="ldkc"){
     if(!appSettings.hasKey(xkey)){
         return {
@@ -12,7 +24,7 @@ exports.get = function(index="all", xkey="ldkc"){
             return {
                 "success"   : true,
                 "message"   : "Data found.",
-                "data"      : JSON.parse(appSettings.getString(xkey))
+                "data"      : multiDimensionalUnique(JSON.parse(appSettings.getString(xkey)))
             };
         } else {
             if ( tmpdata[index] !== void 0 ) {
@@ -43,7 +55,9 @@ exports.insert = function(data=[], xkey="ldkc"){
         };
     } else {
         if(!appSettings.hasKey(xkey)){
-            appSettings.setString(xkey, JSON.stringify(data));
+            let tmp = [];
+            tmp.push(data);
+            appSettings.setString(xkey, JSON.stringify(tmp));
 
             return {
                 "success"   : true,
@@ -53,10 +67,11 @@ exports.insert = function(data=[], xkey="ldkc"){
         } else {
             let tmpdata = [];
             let extractdata = JSON.parse(appSettings.getString(xkey));
-            tmpdata.push(extractdata);
             tmpdata.push(data);
-            appSettings.remove(xkey);
-            appSettings.setString(xkey, JSON.stringify(tmpdata));
+
+            let ma = tmpdata.concat(extractdata);
+            appSettings.remove(xkey);            
+            appSettings.setString(xkey, JSON.stringify(ma));
 
             return {
                 "success"   : true,
