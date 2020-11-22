@@ -12,7 +12,7 @@ function multiDimensionalUnique(arr) {
     return uniques;
 }
 
-exports.get = function(index="all", xkey="ldkc"){
+exports.get = function(index="all", distinct=false, xkey="ldkc"){
     if(!appSettings.hasKey(xkey)){
         return {
             "success"   : false,
@@ -21,18 +21,34 @@ exports.get = function(index="all", xkey="ldkc"){
         };
     } else {
         if(index == "all"){
-            return {
-                "success"   : true,
-                "message"   : "Data found.",
-                "data"      : multiDimensionalUnique(JSON.parse(appSettings.getString(xkey)))
-            };
-        } else {
-            if ( tmpdata[index] !== void 0 ) {
+            if(distinct){
                 return {
                     "success"   : true,
                     "message"   : "Data found.",
-                    "data"      : JSON.parse(appSettings.getString(xkey))[index]
+                    "data"      : multiDimensionalUnique(JSON.parse(appSettings.getString(xkey)))
                 };
+            } else {
+                return {
+                    "success"   : true,
+                    "message"   : "Data found.",
+                    "data"      : JSON.parse(appSettings.getString(xkey))
+                };
+            }
+        } else {
+            if ( tmpdata[index] !== void 0 ) {
+                if(distinct){
+                    return {
+                        "success"   : true,
+                        "message"   : "Data found.",
+                        "data"      : multiDimensionalUnique(JSON.parse(appSettings.getString(xkey)))[index]
+                    };
+                } else {
+                    return {
+                        "success"   : true,
+                        "message"   : "Data found.",
+                        "data"      : JSON.parse(appSettings.getString(xkey))[index]
+                    };
+                }
             } else {
 
                 return {
