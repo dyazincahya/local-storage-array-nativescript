@@ -61,7 +61,7 @@ exports.get = function(index="all", distinct=false, xkey="ldkc"){
         
     }
 };
-
+ 
 exports.insert = function(data=[], xkey="ldkc"){
     if(data.length == 0 || Object.keys(data).length == 0){
         return {
