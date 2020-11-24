@@ -35,4 +35,30 @@ if(a.success){
 }
 ```
 
+### INSERT
+##### Method
+```insert(data, xkey)```
 
+##### Param Description
+|  Params  | Type    | Default Value | Description                                      |
+|----------|---------|---------------|--------------------------------------------------|
+| data     | json    | {}            | Add your data here, data must be in json format. |
+| xkey     | String  | lsakc         | You can make new your xkey here                  |
+
+##### Example
+``` javascript
+// you can adjust that require path
+const lsa = require('./localstorage_array');
+
+let mydata = {
+  "name"  : "kang cahya",
+  "hobby" : "hiking",
+  "color" : "blue"
+};
+let a = lsa.insert(mydata);
+if(a.success){
+  console.log(a.data);
+} else {
+  console.log(a.message);
+}
+```
