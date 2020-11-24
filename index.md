@@ -21,7 +21,7 @@ Nativescript 6 or newer
 With this, you can get all data or get data by index.
 
 ##### Method
-```get(index, distinct, xkey)```
+get(index, distinct, xkey)
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                                                                              |
@@ -47,7 +47,7 @@ if(a.success){
 For insert new data.
 
 ##### Method
-```insert(data, xkey)```
+insert(data, xkey)
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                                      |
@@ -77,7 +77,7 @@ if(a.success){
 For update data by index.
 
 ##### Method
-```update(data, index, xkey)```
+update(data, index, xkey)
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                                      |
@@ -108,7 +108,7 @@ if(a.success){
 For delete data by index.
 
 ##### Method
-```delete(index, xkey)```
+delete(index, xkey)
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                                      |
