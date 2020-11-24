@@ -12,7 +12,7 @@ function multiDimensionalUnique(arr) {
     return uniques;
 }
 
-exports.get = function(index=null, distinct=false, xkey="ldkc"){
+exports.get = function(index=null, distinct=false, xkey="lsakc"){
     if(!appSettings.hasKey(xkey)){
         return {
             "success"   : false,
@@ -62,7 +62,7 @@ exports.get = function(index=null, distinct=false, xkey="ldkc"){
     }
 };
  
-exports.insert = function(data=[], xkey="ldkc"){
+exports.insert = function(data=[], xkey="lsakc"){
     if(data.length == 0 || Object.keys(data).length == 0){
         return {
             "success"   : false,
@@ -98,7 +98,7 @@ exports.insert = function(data=[], xkey="ldkc"){
     }
 };
 
-exports.update = function(data=[], index=0, xkey="ldkc"){
+exports.update = function(data=[], index=0, xkey="lsakc"){
     if(data.length == 0 || Object.keys(data).length == 0){
         return {
             "success"   : false,
@@ -140,7 +140,7 @@ exports.update = function(data=[], index=0, xkey="ldkc"){
     }
 };
 
-exports.delete = function(index=0, xkey="ldkc"){
+exports.delete = function(index=0, xkey="lsakc"){
     if(!appSettings.hasKey(xkey)){
         return {
             "success" : false,
@@ -177,7 +177,7 @@ exports.delete = function(index=0, xkey="ldkc"){
     }
 };
 
-exports.truncate = function(xkey="ldkc"){
+exports.truncate = function(xkey="lsakc"){
     if(!appSettings.hasKey(xkey)){
         return {
             "success" : false,
@@ -194,7 +194,7 @@ exports.truncate = function(xkey="ldkc"){
     }
 };
 
-exports.drop = function(xkey="ldkc"){
+exports.drop = function(xkey="lsakc"){
     if(!appSettings.hasKey(xkey)){
         return {
             "success" : false,
