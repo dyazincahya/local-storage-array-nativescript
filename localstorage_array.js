@@ -184,35 +184,18 @@ exports.delete = function(index=0, xkey="lsakc"){
     }
 };
 
-exports.truncate = function(xkey="lsakc"){
-    if(!appSettings.hasKey(xkey)){
-        return {
-            "success" : false,
-            "message" : "Database not found!"
-        };
-    } else {
-        appSettings.remove(xkey);
-        appSettings.setString(xkey, JSON.stringify([]));
-        
-        return {
-            "success" : true,
-            "message" : "Database has been truncated."
-        };
-    }
-};
-
 exports.drop = function(xkey="lsakc"){
     if(!appSettings.hasKey(xkey)){
         return {
             "success" : false,
-            "message" : "Database not found!"
+            "message" : "Storage not found!"
         };
     } else {
         appSettings.remove(xkey);
         
         return {
             "success" : true,
-            "message" : "Database has been dropped."
+            "message" : "Storage has been dropped."
         };
     }
 };
