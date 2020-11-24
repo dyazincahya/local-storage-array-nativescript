@@ -13,52 +13,54 @@ function multiDimensionalUnique(arr) {
 }
 
 exports.get = function(index=null, distinct=false, xkey="lsakc"){
-    if(!appSettings.hasKey(xkey)){
-        return {
-            "success"   : false,
-            "message"   : "Data not found!",
-            "data"      : []
-        };
-    } else {
-        if(index == null){
+    appSettings.setString(xkey, "");
+
+    if(index == null){
+        let arrData = JSON.parse(appSettings.getString(xkey));
+        if(arrData.length != 0){                
             if(distinct){
                 return {
                     "success"   : true,
                     "message"   : "Data found.",
-                    "data"      : multiDimensionalUnique(JSON.parse(appSettings.getString(xkey)))
+                    "data"      : multiDimensionalUnique(arrData)
                 };
             } else {
                 return {
                     "success"   : true,
                     "message"   : "Data found.",
-                    "data"      : JSON.parse(appSettings.getString(xkey))
+                    "data"      : arrData
                 };
             }
         } else {
-            if ( tmpdata[index] !== void 0 ) {
-                if(distinct){
-                    return {
-                        "success"   : true,
-                        "message"   : "Data found.",
-                        "data"      : multiDimensionalUnique(JSON.parse(appSettings.getString(xkey)))[index]
-                    };
-                } else {
-                    return {
-                        "success"   : true,
-                        "message"   : "Data found.",
-                        "data"      : JSON.parse(appSettings.getString(xkey))[index]
-                    };
-                }
-            } else {
-
+            return {
+                "success"   : false,
+                "message"   : "Data not found!",
+                "data"      : []
+            };
+        }
+    } else {
+        if ( tmpdata[index] !== void 0 ) {
+            if(distinct){
                 return {
-                    "success"   : false,
-                    "message"   : "Index not found!",
-                    "data"      : []
+                    "success"   : true,
+                    "message"   : "Data found.",
+                    "data"      : multiDimensionalUnique(JSON.parse(appSettings.getString(xkey)))[index]
+                };
+            } else {
+                return {
+                    "success"   : true,
+                    "message"   : "Data found.",
+                    "data"      : JSON.parse(appSettings.getString(xkey))[index]
                 };
             }
+        } else {
+
+            return {
+                "success"   : false,
+                "message"   : "Index not found!",
+                "data"      : []
+            };
         }
-        
     }
 };
  
