@@ -1,5 +1,5 @@
 # Local Storage Array For Nativescript
-This is the simple Local Storage Array for Nativescript, integrated by ```application-settings module```. With this you can add some array in localstorage.
+This is a simple Local Storage Array for Nativescript, integrated by ```application-settings module```. With this you can add some array in localstorage.
 
 ## Features
 - get all data or by index
@@ -87,6 +87,29 @@ let mydata = {
 let a = lsa.update(mydata, 1);
 if(a.success){
   console.log(a.data);
+} else {
+  console.log(a.message);
+}
+```
+
+### DELETE
+##### Method
+```delete(index, xkey)```
+
+##### Param Description
+|  Params  | Type    | Default Value | Description                                      |
+|----------|---------|---------------|--------------------------------------------------|
+| index    | number  | 0             | This is a key for delete your data.              |
+| xkey     | String  | lsakc         | You can make new your xkey here.                 |
+
+##### Example
+``` javascript
+// you can adjust that require path
+const lsa = require('./localstorage_array');
+
+let a = lsa.update(3);
+if(a.success){
+  console.log(a.message);
 } else {
   console.log(a.message);
 }
