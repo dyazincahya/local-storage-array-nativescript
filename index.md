@@ -133,7 +133,7 @@ if(a.success){
 With this, you can delete all data in xkey.
 
 ##### Method
-```drop(xkey)```
+drop(xkey)
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                |
