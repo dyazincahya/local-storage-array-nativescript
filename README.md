@@ -6,12 +6,14 @@ This is a simple Local Storage Array for Nativescript, integrated by ```applicat
 - insert
 - update
 - delete
-- truncate
 - drop
 
 ## Documentation
+> Put [localstorage_array.js](https://github.com/dyazincahya/local-storage-array-nativescript/blob/main/localstorage_array.js) in App Directory.
 
 ### GET
+With this, you can get all data or get data by index.
+
 ##### Method
 ```get(index, distinct, xkey)```
 
@@ -20,7 +22,7 @@ This is a simple Local Storage Array for Nativescript, integrated by ```applicat
 |----------|---------|---------------|------------------------------------------------------------------------------------------|
 | index    | number  | null          | For get data by index. If you want get all data, you can fill ```null``` for this field. |
 | distinct | boolean | false         | Set ```TRUE``` if you want hide duplicate data in your array.                            |
-| xkey     | String  | lsakc         | You can make new your xkey here.                                                         |
+| xkey     | String  | lsakc         | Your xkey.                                                                               |
 
 ##### Example
 ``` javascript
@@ -36,6 +38,8 @@ if(a.success){
 ```
 
 ### INSERT
+For insert new data.
+
 ##### Method
 ```insert(data, xkey)```
 
@@ -64,6 +68,8 @@ if(a.success){
 ```
 
 ### UPDATE
+For update data by index.
+
 ##### Method
 ```update(data, index, xkey)```
 
@@ -72,7 +78,7 @@ if(a.success){
 |----------|---------|---------------|--------------------------------------------------|
 | data     | json    | {}            | Add your data here, data must be in json format. |
 | index    | number  | 0             | This is a key for update your data.              |
-| xkey     | String  | lsakc         | You can make new your xkey here.                 |
+| xkey     | String  | lsakc         | Your xkey.                                       |
 
 ##### Example
 ``` javascript
@@ -93,6 +99,8 @@ if(a.success){
 ```
 
 ### DELETE
+For delete data by index.
+
 ##### Method
 ```delete(index, xkey)```
 
@@ -100,7 +108,7 @@ if(a.success){
 |  Params  | Type    | Default Value | Description                                      |
 |----------|---------|---------------|--------------------------------------------------|
 | index    | number  | 0             | This is a key for delete your data.              |
-| xkey     | String  | lsakc         | You can make new your xkey here.                 |
+| xkey     | String  | lsakc         | Your xkey.                                       |
 
 ##### Example
 ``` javascript
@@ -114,3 +122,28 @@ if(a.success){
   console.log(a.message);
 }
 ```
+
+### DROP
+With this, you can delete all data in xkey.
+
+##### Method
+```drop(xkey)```
+
+##### Param Description
+|  Params  | Type    | Default Value | Description                |
+|----------|---------|---------------|----------------------------|
+| xkey     | String  | lsakc         | Your xkey.                 |
+
+##### Example
+``` javascript
+// you can adjust that require path
+const lsa = require('./localstorage_array');
+
+let a = lsa.drop("your_xkey");
+if(a.success){
+  console.log(a.message);
+} else {
+  console.log(a.message);
+}
+```
+
