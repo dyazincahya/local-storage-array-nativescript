@@ -13,54 +13,59 @@ function multiDimensionalUnique(arr) {
 }
 
 exports.get = function(index=null, distinct=false, xkey="lsakc"){
-    appSettings.setString(xkey, "");
-
-    if(index == null){
-        let arrData = JSON.parse(appSettings.getString(xkey));
-        if(arrData.length != 0){                
-            if(distinct){
-                return {
-                    "success"   : true,
-                    "message"   : "Data found.",
-                    "data"      : multiDimensionalUnique(arrData)
-                };
-            } else {
-                return {
-                    "success"   : true,
-                    "message"   : "Data found.",
-                    "data"      : arrData
-                };
-            }
-        } else {
-            return {
-                "success"   : false,
-                "message"   : "Data not found!",
-                "data"      : []
-            };
-        }
+    if(!appSettings.hasKey(xkey)){
+        return {
+            "success"   : false,
+            "message"   : "Data not found!",
+            "data"      : []
+        };
     } else {
-        if ( tmpdata[index] !== void 0 ) {
-            if(distinct){
-                return {
-                    "success"   : true,
-                    "message"   : "Data found.",
-                    "data"      : multiDimensionalUnique(JSON.parse(appSettings.getString(xkey)))[index]
-                };
+        const arrData = JSON.parse(appSettings.getString(xkey));
+        if(index == null){
+            if(arrData.length != 0){                
+                if(distinct){
+                    return {
+                        "success"   : true,
+                        "message"   : "Data found.",
+                        "data"      : multiDimensionalUnique(arrData)
+                    };
+                } else {
+                    return {
+                        "success"   : true,
+                        "message"   : "Data found.",
+                        "data"      : arrData
+                    };
+                }
             } else {
                 return {
-                    "success"   : true,
-                    "message"   : "Data found.",
-                    "data"      : JSON.parse(appSettings.getString(xkey))[index]
+                    "success"   : false,
+                    "message"   : "Data not found!",
+                    "data"      : []
                 };
             }
         } else {
-
-            return {
-                "success"   : false,
-                "message"   : "Index not found!",
-                "data"      : []
-            };
-        }
+            if ( tmpdata[index] !== void 0 ) {
+                if(distinct){
+                    return {
+                        "success"   : true,
+                        "message"   : "Data found.",
+                        "data"      : multiDimensionalUnique(arrData)[index]
+                    };
+                } else {
+                    return {
+                        "success"   : true,
+                        "message"   : "Data found.",
+                        "data"      : arrData[index]
+                    };
+                }
+            } else {
+                return {
+                    "success"   : false,
+                    "message"   : "Index not found!",
+                    "data"      : []
+                };
+            }
+        }        
     }
 };
  
