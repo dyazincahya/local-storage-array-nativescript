@@ -12,7 +12,7 @@ function multiDimensionalUnique(arr) {
     return uniques;
 }
 
-exports.get = function(index="all", distinct=false, xkey="ldkc"){
+exports.get = function(index=null, distinct=false, xkey="ldkc"){
     if(!appSettings.hasKey(xkey)){
         return {
             "success"   : false,
@@ -20,7 +20,7 @@ exports.get = function(index="all", distinct=false, xkey="ldkc"){
             "data"      : []
         };
     } else {
-        if(index == "all"){
+        if(index == null){
             if(distinct){
                 return {
                     "success"   : true,
