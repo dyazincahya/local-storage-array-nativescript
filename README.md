@@ -8,6 +8,12 @@ This is a simple Local Storage Array for Nativescript, integrated by ```applicat
 - delete
 - drop
 
+## Support
+Nativescript 6 or newer
+
+## Dependency With
+[application-settings module](https://docs.nativescript.org/ns-framework-modules/application-settings)
+
 ## Documentation
 > Put [localstorage_array.js](https://github.com/dyazincahya/local-storage-array-nativescript/blob/main/localstorage_array.js) in App Directory.
 
@@ -147,3 +153,8 @@ if(a.success){
 }
 ```
 
+## Author
+[Kang Cahya](https://www.kang-cahya.com/)
+
+## License
+[MIT License](https://github.com/dyazincahya/local-storage-array-nativescript/blob/main/LICENSE)
