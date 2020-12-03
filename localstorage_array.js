@@ -88,13 +88,21 @@ exports.insert = function(data=[], xkey="lsakc"){
                 "data"      : data
             };
         } else {
-            let tmpdata = [];
-            let extractdata = JSON.parse(appSettings.getString(xkey));
-            tmpdata.push(data);
+            if(Array.isArray(data)){
+                let extractdata = JSON.parse(appSettings.getString(xkey));
 
-            let ma = tmpdata.concat(extractdata);
-            appSettings.remove(xkey);            
-            appSettings.setString(xkey, JSON.stringify(ma));
+                let ma = data.concat(extractdata);
+                appSettings.remove(xkey);            
+                appSettings.setString(xkey, JSON.stringify(ma)); 
+            } else {
+                let tmpdata = [];
+                let extractdata = JSON.parse(appSettings.getString(xkey));
+                tmpdata.push(data);
+
+                let ma = tmpdata.concat(extractdata);
+                appSettings.remove(xkey);            
+                appSettings.setString(xkey, JSON.stringify(ma));   
+            }
 
             return {
                 "success"   : true,
