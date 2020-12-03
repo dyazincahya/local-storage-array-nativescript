@@ -21,7 +21,7 @@ Nativescript 6 or newer
 With this, you can get all data or get data by index.
 
 ##### Method
-get(index, distinct, xkey)
+```get(index, distinct, xkey)```
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                                                                              |
@@ -47,13 +47,13 @@ if(a.success){
 For insert new data.
 
 ##### Method
-insert(data, xkey)
+```insert(data, xkey)```
 
 ##### Param Description
-|  Params  | Type    | Default Value | Description                                      |
-|----------|---------|---------------|--------------------------------------------------|
-| data     | json    | {}            | Add your data here, data must be in json format. |
-| xkey     | String  | lsakc         | You can make new your xkey here.                 |
+|  Params  | Type             | Default Value | Description                                      |
+|----------|------------------|---------------|--------------------------------------------------|
+| data     | json or array    | []            | Add your data here, data must be in json format. |
+| xkey     | String           | lsakc         | You can make new your xkey here.                 |
 
 ##### Example
 ``` javascript
@@ -77,7 +77,7 @@ if(a.success){
 For update data by index.
 
 ##### Method
-update(data, index, xkey)
+```update(data, index, xkey)```
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                                      |
@@ -108,7 +108,7 @@ if(a.success){
 For delete data by index.
 
 ##### Method
-delete(index, xkey)
+```delete(index, xkey)```
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                                      |
@@ -133,7 +133,7 @@ if(a.success){
 With this, you can delete all data in xkey.
 
 ##### Method
-drop(xkey)
+```drop(xkey)```
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                |
