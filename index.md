@@ -149,7 +149,7 @@ With this, you can delete all data in xkey.
 |----------|---------|---------------|----------------------------|
 | xkey     | String  | lsakc         | Your xkey.                 |
 ```
-
+``` ```
 ##### Example
 ``` javascript
 // you can adjust that require path
