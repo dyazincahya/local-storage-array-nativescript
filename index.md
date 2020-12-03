@@ -144,12 +144,12 @@ With this, you can delete all data in xkey.
 ```drop(xkey)```
 
 ##### Param Description
-```
+
 |  Params  | Type    | Default Value | Description                |
 |----------|---------|---------------|----------------------------|
 | xkey     | String  | lsakc         | Your xkey.                 |
-```
-``` ```
+
+
 ##### Example
 ``` javascript
 // you can adjust that require path
