@@ -24,11 +24,13 @@ With this, you can get all data or get data by index.
 ```get(index, distinct, xkey)```
 
 ##### Param Description
+```
 |  Params  | Type    | Default Value | Description                                                                              |
 |----------|---------|---------------|------------------------------------------------------------------------------------------|
 | index    | number  | null          | For get data by index. If you want get all data, you can fill ```null``` for this field. |
 | distinct | boolean | false         | Set ```TRUE``` if you want hide duplicate data in your array.                            |
 | xkey     | String  | lsakc         | Your xkey.                                                                               |
+```
 
 ##### Example
 ``` javascript
@@ -50,10 +52,12 @@ For insert new data.
 ```insert(data, xkey)```
 
 ##### Param Description
+```
 |  Params  | Type             | Default Value | Description                                      |
 |----------|------------------|---------------|--------------------------------------------------|
 | data     | json or array    | []            | Add your data here, data must be in json format. |
 | xkey     | String           | lsakc         | You can make new your xkey here.                 |
+```
 
 ##### Example
 ``` javascript
@@ -80,11 +84,13 @@ For update data by index.
 ```update(data, index, xkey)```
 
 ##### Param Description
+```
 |  Params  | Type    | Default Value | Description                                      |
 |----------|---------|---------------|--------------------------------------------------|
 | data     | json    | {}            | Add your data here, data must be in json format. |
 | index    | number  | 0             | This is a key for update your data.              |
 | xkey     | String  | lsakc         | Your xkey.                                       |
+```
 
 ##### Example
 ``` javascript
@@ -111,10 +117,12 @@ For delete data by index.
 ```delete(index, xkey)```
 
 ##### Param Description
+```
 |  Params  | Type    | Default Value | Description                                      |
 |----------|---------|---------------|--------------------------------------------------|
 | index    | number  | 0             | This is a key for delete your data.              |
 | xkey     | String  | lsakc         | Your xkey.                                       |
+```
 
 ##### Example
 ``` javascript
@@ -136,9 +144,11 @@ With this, you can delete all data in xkey.
 ```drop(xkey)```
 
 ##### Param Description
+```
 |  Params  | Type    | Default Value | Description                |
 |----------|---------|---------------|----------------------------|
 | xkey     | String  | lsakc         | Your xkey.                 |
+```
 
 ##### Example
 ``` javascript
