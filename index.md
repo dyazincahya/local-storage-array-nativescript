@@ -27,8 +27,8 @@ With this, you can get all data or get data by index.
 ```
 |  Params  | Type    | Default Value | Description                                                                              |
 |----------|---------|---------------|------------------------------------------------------------------------------------------|
-| index    | number  | null          | For get data by index. If you want get all data, you can fill ```null``` for this field. |
-| distinct | boolean | false         | Set ```TRUE``` if you want hide duplicate data in your array.                            |
+| index    | number  | null          | For get data by index. If you want get all data, you can fill `null` for this field.     |
+| distinct | boolean | false         | Set `TRUE` if you want hide duplicate data in your array.                                |
 | xkey     | String  | lsakc         | Your xkey.                                                                               |
 ```
 
