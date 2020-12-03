@@ -50,10 +50,10 @@ For insert new data.
 ```insert(data, xkey)```
 
 ##### Param Description
-|  Params  | Type    | Default Value | Description                                      |
-|----------|---------|---------------|--------------------------------------------------|
-| data     | json    | {}            | Add your data here, data must be in json format. |
-| xkey     | String  | lsakc         | You can make new your xkey here.                 |
+|  Params  | Type             | Default Value | Description                                      |
+|----------|------------------|---------------|--------------------------------------------------|
+| data     | json or array    | []            | Add your data here, data must be in json format. |
+| xkey     | String           | lsakc         | You can make new your xkey here.                 |
 
 ##### Example
 ``` javascript
