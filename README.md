@@ -1,6 +1,6 @@
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K02WIPN)
 
-# Local Storage Array For Nativescript
+# Local Storage Array for Nativescript
 This is a simple Local Storage Array for Nativescript, integrated by [application-settings](https://docs.nativescript.org/api-reference/modules#applicationsettings) module. With this you can add some array in localstorage.
 
 ## Features
