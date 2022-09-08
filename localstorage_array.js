@@ -1,4 +1,4 @@
-import { ApplicationSettings } from '@nativescript/core'
+const appSettings = require("tns-core-modules/application-settings");
 
 function multiDimensionalUnique(arr) {
     var uniques = [];
@@ -12,8 +12,7 @@ function multiDimensionalUnique(arr) {
     return uniques;
 }
 
-export function LSget(index=null, distinct=false, xkey="lsakc"){
-    const appSettings = ApplicationSettings
+exports.get = function(index=null, distinct=false, xkey="lsakc"){
     if(!appSettings.hasKey(xkey)){
         return {
             "success"   : false,
@@ -29,20 +28,20 @@ export function LSget(index=null, distinct=false, xkey="lsakc"){
                         "success"   : true,
                         "message"   : "Data found.",
                         "data"      : multiDimensionalUnique(arrData)
-                    }
+                    };
                 } else {
                     return {
                         "success"   : true,
                         "message"   : "Data found.",
                         "data"      : arrData
-                    }
+                    };
                 }
             } else {
                 return {
                     "success"   : false,
                     "message"   : "Data not found!",
                     "data"      : []
-                }
+                };
             }
         } else {
             if ( tmpdata[index] !== void 0 ) {
@@ -51,72 +50,26 @@ export function LSget(index=null, distinct=false, xkey="lsakc"){
                         "success"   : true,
                         "message"   : "Data found.",
                         "data"      : multiDimensionalUnique(arrData)[index]
-                    }
+                    };
                 } else {
                     return {
                         "success"   : true,
                         "message"   : "Data found.",
                         "data"      : arrData[index]
-                    }
+                    };
                 }
             } else {
                 return {
                     "success"   : false,
                     "message"   : "Index not found!",
                     "data"      : []
-                }
+                };
             }
         }        
     }
-}
-
-export function LSinsert(data=[], xkey="lsakc"){
-    const appSettings = ApplicationSettings
-    if(data.length == 0 || Object.keys(data).length == 0){
-        return {
-            "success"   : false,
-            "message"   : "Data is null!",
-            "data"      : data
-        }
-    } else {
-        if(!appSettings.hasKey(xkey)){
-            let tmp = []
-            tmp.push(data)
-            appSettings.setString(xkey, JSON.stringify(tmp))
-
-            return {
-                "success"   : true,
-                "message"   : "Data has been inserted!",
-                "data"      : data
-            }
-        } else {
-            if(Array.isArray(data)){
-                let extractdata = JSON.parse(appSettings.getString(xkey))
-
-                let ma = data.concat(extractdata)
-                appSettings.remove(xkey)          
-                appSettings.setString(xkey, JSON.stringify(ma))
-            } else {
-                let tmpdata = []
-                let extractdata = JSON.parse(appSettings.getString(xkey))
-                tmpdata.push(data)
-
-                let ma = tmpdata.concat(extractdata)
-                appSettings.remove(xkey)
-                appSettings.setString(xkey, JSON.stringify(ma))
-            }
-
-            return {
-                "success"   : true,
-                "message"   : "Data has been inserted.",
-                "data"      : data
-            }
-        }
-    }
-}
-
-export function LSupdate(data={}, index=0, xkey="lsakc"){
-    const appSettings = ApplicationSettings
+};
+ 
+exports.insert = function(data=[], xkey="lsakc"){
     if(data.length == 0 || Object.keys(data).length == 0){
         return {
             "success"   : false,
@@ -124,98 +77,133 @@ export function LSupdate(data={}, index=0, xkey="lsakc"){
             "data"      : data
         };
     } else {
-        let tmpdata = []
-        let extractdata = JSON.parse(appSettings.getString(xkey))
-        for (let k = 0; k < extractdata.length; k++) {
-            tmpdata.push(extractdata[k])
-        } 
+        if(!appSettings.hasKey(xkey)){
+            let tmp = [];
+            tmp.push(data);
+            appSettings.setString(xkey, JSON.stringify(tmp));
+
+            return {
+                "success"   : true,
+                "message"   : "Data has been inserted!",
+                "data"      : data
+            };
+        } else {
+            if(Array.isArray(data)){
+                let extractdata = JSON.parse(appSettings.getString(xkey));
+
+                let ma = data.concat(extractdata);
+                appSettings.remove(xkey);            
+                appSettings.setString(xkey, JSON.stringify(ma)); 
+            } else {
+                let tmpdata = [];
+                let extractdata = JSON.parse(appSettings.getString(xkey));
+                tmpdata.push(data);
+
+                let ma = tmpdata.concat(extractdata);
+                appSettings.remove(xkey);            
+                appSettings.setString(xkey, JSON.stringify(ma));   
+            }
+
+            return {
+                "success"   : true,
+                "message"   : "Data has been inserted.",
+                "data"      : data
+            };
+        }
+    }
+};
+
+exports.update = function(data=[], index=0, xkey="lsakc"){
+    if(data.length == 0 || Object.keys(data).length == 0){
+        return {
+            "success"   : false,
+            "message"   : "Data is null!",
+            "data"      : data
+        };
+    } else {
+        let tmpdata = [];
+        let extractdata = JSON.parse(appSettings.getString(xkey));
+        tmpdata.push(extractdata);
 
         if ( tmpdata[index] !== void 0 ) {
+            delete tmpdata[index];
+
             let newdata = [];
             for (let i = 0; i < tmpdata.length; i++) {
                 if(tmpdata[i] != undefined || tmpdata[i] != "undefined"){
-                    if(i === index){
-                        newdata.push(data)
-                    } else {
-                        newdata.push(tmpdata[i])
-                    }
+                    newdata.push(tmpdata[i]);
                 } else {
-                    newdata.push(data)
+                    newdata.push(data);
                 }           
             }
 
-            appSettings.remove(xkey)
-            appSettings.setString(xkey, JSON.stringify(newdata))
+            appSettings.remove(xkey);
+            appSettings.setString(xkey, JSON.stringify(newdata));
             
             return {
                 "success"   : true,
                 "message"   : "Data has been updated.",
                 "data"      : data
-            }
+            };
         } else {
             return {
                 "success"   : false,
                 "message"   : "Index not found!",
                 "data"      : data
-            }
+            };
         }
     }
-}
+};
 
-export function LSremove(index=0, xkey="lsakc"){
-    const appSettings = ApplicationSettings
+exports.delete = function(index=0, xkey="lsakc"){
     if(!appSettings.hasKey(xkey)){
         return {
             "success" : false,
             "message" : "Database not found!"
-        }
+        };
     } else {
-        let tmpdata = []
-        let extractdata = JSON.parse(appSettings.getString(xkey))
-        
-        for (let k = 0; k < extractdata.length; k++) {
-            tmpdata.push(extractdata[k])
-        } 
+        let tmpdata = [];
+        let extractdata = JSON.parse(appSettings.getString(xkey));
+        tmpdata.push(extractdata);
 
         if ( tmpdata[index] !== void 0 ) {
+            delete tmpdata[index];
+            
             let newdata = [];
             for (let i = 0; i < tmpdata.length; i++) {
                 if(tmpdata[i] != undefined || tmpdata[i] != "undefined"){
-                    if(i !== index){
-                        newdata.push(tmpdata[i])
-                    }
+                    newdata.push(tmpdata[i]);
                 }            
             }
             
-            appSettings.remove(xkey)
-            appSettings.setString(xkey, JSON.stringify(newdata))
+            appSettings.remove(xkey);
+            appSettings.setString(xkey, JSON.stringify(newdata));
 
             return {
                 "success" : true,
                 "message" : "Data has been deleted."
-            }
+            };
         } else {
             return {
                 "success" : false,
                 "message" : "Index not found!"
-            }
+            };
         }
     }
-}
+};
 
-export function LSdrop(xkey="lsakc"){
-    const appSettings = ApplicationSettings
+exports.drop = function(xkey="lsakc"){
     if(!appSettings.hasKey(xkey)){
         return {
             "success" : false,
             "message" : "Storage not found!"
-        }
+        };
     } else {
         appSettings.remove(xkey);
         
         return {
             "success" : true,
             "message" : "Storage has been dropped."
-        }
+        };
     }
-}
+};

@@ -1,37 +1,27 @@
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K02WIPN)
-
-# Local Storage Array for Nativescript
-This is a simple Local Storage Array for Nativescript, integrated by [application-settings](https://docs.nativescript.org/api-reference/modules#applicationsettings) module. With this you can add some array in localstorage.
+# Local Storage Array For Nativescript
+This is a simple Local Storage Array for Nativescript, integrated by ```application-settings module```. With this you can add some array in localstorage.
 
 ## Features
 - get all data or by index
 - insert
 - update
-- remove
+- delete
 - drop
 
 ## Support
-[Nativescript 8](https://nativescript.org) or newer
+Nativescript 6 or newer
 
-## Dependency with Module
-[application-settings](https://docs.nativescript.org/api-reference/modules#applicationsettings)
+## Dependency With
+[application-settings module](https://docs.nativescript.org/ns-framework-modules/application-settings)
 
 ## Documentation
-
-- Put [localstorage_array.js](https://github.com/dyazincahya/local-storage-array-nativescript/blob/main/localstorage_array.js) in App Directory.
-- And Import the [localstorage_array.js](https://github.com/dyazincahya/local-storage-array-nativescript/blob/main/localstorage_array.js) like this :
-
-```typescript
-import { LSget, LSinsert, LSupdate, LSremove, LSdrop } from '../localstorage_array'
-```
-> you can adjust that Import path if you want
-
+> Put [localstorage_array.js](https://github.com/dyazincahya/local-storage-array-nativescript/blob/main/localstorage_array.js) in App Directory.
 
 ### GET
 With this, you can get all data or get data by index.
 
 ##### Method
-```LSget(index, distinct, xkey)```
+```get(index, distinct, xkey)```
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                                                                              |
@@ -42,10 +32,10 @@ With this, you can get all data or get data by index.
 
 ##### Example
 ``` javascript
-// you can adjust that Import path
-import { LSget } from '../localstorage_array'
+// you can adjust that require path
+const lsa = require('./localstorage_array');
 
-let a = LSget();
+let a = lsa.get();
 if(a.success){
   console.log(a.data);
 } else {
@@ -57,7 +47,7 @@ if(a.success){
 For insert new data.
 
 ##### Method
-```LSinsert(data, xkey)```
+```insert(data, xkey)```
 
 ##### Param Description
 |  Params  | Type             | Default Value | Description                                      |
@@ -67,15 +57,15 @@ For insert new data.
 
 ##### Example
 ``` javascript
-// you can adjust that Import path
-import { LSinsert } from '../localstorage_array'
+// you can adjust that require path
+const lsa = require('./localstorage_array');
 
 let mydata = {
   "name"  : "kang cahya",
   "hobby" : "hiking",
   "color" : "blue"
 };
-let a = LSinsert(mydata);
+let a = lsa.insert(mydata);
 if(a.success){
   console.log(a.data);
 } else {
@@ -87,7 +77,7 @@ if(a.success){
 For update data by index.
 
 ##### Method
-```LSupdate(data, index, xkey)```
+```update(data, index, xkey)```
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                                      |
@@ -98,15 +88,15 @@ For update data by index.
 
 ##### Example
 ``` javascript
-// you can adjust that Import path
-import { LSupdate } from '../localstorage_array'
+// you can adjust that require path
+const lsa = require('./localstorage_array');
 
 let mydata = {
   "name"  : "kang cahya",
   "hobby" : "hiking",
   "color" : "blue"
 };
-let a = LSupdate(mydata, 1);
+let a = lsa.update(mydata, 1);
 if(a.success){
   console.log(a.data);
 } else {
@@ -114,11 +104,11 @@ if(a.success){
 }
 ```
 
-### REMOVE
+### DELETE
 For delete data by index.
 
 ##### Method
-```LSremove(index, xkey)```
+```delete(index, xkey)```
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                                      |
@@ -128,10 +118,10 @@ For delete data by index.
 
 ##### Example
 ``` javascript
-// you can adjust that Import path
-import { LSremove } from '../localstorage_array'
+// you can adjust that require path
+const lsa = require('./localstorage_array');
 
-let a = LSremove(3);
+let a = lsa.update(3);
 if(a.success){
   console.log(a.message);
 } else {
@@ -143,7 +133,7 @@ if(a.success){
 With this, you can delete all data in xkey.
 
 ##### Method
-```LSdrop(xkey)```
+```drop(xkey)```
 
 ##### Param Description
 |  Params  | Type    | Default Value | Description                |
@@ -152,10 +142,10 @@ With this, you can delete all data in xkey.
 
 ##### Example
 ``` javascript
-// you can adjust that Import path
-import { LSdrop } from '../localstorage_array'
+// you can adjust that require path
+const lsa = require('./localstorage_array');
 
-let a = LSdrop("your_xkey");
+let a = lsa.drop("your_xkey");
 if(a.success){
   console.log(a.message);
 } else {
